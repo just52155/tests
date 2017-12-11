@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=750,user-scalable=no,target-densitydpi=device-dpi">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>{$site_seo_title} {$site_name}</title>
+<meta name="keywords" content="{$site_seo_keywords}" />
+<meta name="description" content="{$site_seo_description}">
+<link href="__TMPL__Public/css/css.css" rel="stylesheet" />
+<script type="text/javascript" src="__TMPL__Public/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__TMPL__Public/js/public.js"></script>
+</head>
+
+<body>
+<!--导航-->
+<div class="titile_navmarsk">
+	关于公司
+    <a href="javascript:;" class="nav_mark1"  /></a>
+</div>
+<!--二级导航-->
+<div class="second_box_set">
+	<ul class="navset_boset1 ClearFix">
+        <php>
+            $list = _jsp_get_nav($id, 0);
+            $menus = _jsp_get_menus_by_id($list['parentid'], $list['id'], true);
+        </php>
+        <foreach name="menus" item="vo">
+            <li <if condition="($vo.selected eq 1)">class="hover"</if>>
+                <a title="{$vo.label}" href="{$vo.href}">{$vo.label}<span>{$vo.labelenglish}</span></a>
+            </li>
+        </foreach>
+    </ul>
+</div>
+<!--二级导航-->
+<!--组织机构-->
+<div class="zuzjigou_box">
+	<h3 class="titile_set"><span  /></span></h3>
+    <p class="titleset_bosef"></p>
+    <div class="zjtu_set_content">
+    	{$post_content}
+    </div>
+</div>
+<!--组织机构-->
+<!--版权-->
+<div class="footer">
+版权所有：建研爱康(北京)科技发展公司
+</div>
+<!--导航-->
+<tc_include file="Public:nav" />
+<!--导航-->
+</body>
+</html>
